@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Creating a Heading with &lt;h1&gt;</title>
+    <style>
+        /* Center the image at the top */
+        .header-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+        /* Style for the specific text and headings */
+        .blue-bold {
+            color: blue;
+            font-weight: bold;
+        }
+        .green-heading {
+            color: green;
+        }
+        /* Button styles */
+        .check-button {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .try-again-button {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+        .run-button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .exercise-container {
+            margin-bottom: 20px;
+            display: none;
+        }
+        .more-lessons-button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        iframe {
+            border: 1px solid #ccc;
+            width: 100%;
+            height: 200px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        let currentExercise = 1;
+
+        const answers = [
+            "<h1>Hello, World!</h1>",
+            "<h1>Welcome to Coding!</h1>",
+            "<h1>My First Heading</h1>",
+            "<h1>Learning HTML</h1>",
+            "<h1>Practice Makes Perfect</h1>",
+            "<h1>Keep Coding!</h1>",
+            "<h1>You're Doing Great!</h1>",
+            "<h1>Almost There!</h1>",
+            "<h1>One More to Go!</h1>",
+            "<h1>You Did It!</h1>"
+        ];
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("userAnswer" + currentExercise).value.trim();
+            const correctAnswer = answers[currentExercise - 1];
+            const resultDiv = document.getElementById("result" + currentExercise);
+            const tryAgainButton = document.getElementById("tryAgain" + currentExercise);
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.innerHTML = "<p style='color: green; font-weight: bold;'>Correct! Well done! Congratulations!</p>";
+                tryAgainButton.style.display = "none";
+                if (currentExercise < 10) {
+                    currentExercise++;
+                    document.getElementById("exercise" + currentExercise).style.display = "block";
+                } else {
+                    resultDiv.innerHTML += "<p style='color: green; font-weight: bold;'>Congratulations! You've completed all the exercises!</p>";
+                }
+            } else {
+                resultDiv.innerHTML = "<p style='color: red; font-weight: bold;'>Incorrect. Try Again.</p>";
+                tryAgainButton.style.display = "inline-block";
+            }
+        }
+
+        function tryAgain() {
+            document.getElementById("userAnswer" + currentExercise).value = "";
+            document.getElementById("result" + currentExercise).innerHTML = "";
+            document.getElementById("tryAgain" + currentExercise).style.display = "none";
+        }
+
+        function startExercises() {
+            document.getElementById("exercise1").style.display = "block";
+        }
+
+        function runCode() {
+            const code = document.getElementById("userCode").value;
+            const iframe = document.getElementById("resultFrame").contentWindow.document;
+            iframe.open();
+            iframe.write(code);
+            iframe.close();
+        }
+    </script>
+</head>
+<body onload="startExercises()">
+
+    <!-- Centered image at the top -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTmvbQ8PO3QEmNBLuNDGJsOEha8rictP5-rmbG0qYp5qQe3QMEhoogK84OdxPgNB5iwytY-lpQT7E7AY4kpvmMGqK6CUrAHaXXhOj7CjXvKSu71HjYyy9NQ_Oh4CuCC_l97lDW3A9HF2eU670xt5mv83zx2OqCG_Is4zPpdYJ4JUaM14-2AZyEXOBktJE/w92-h84/logo.png" class="header-image" alt="Logo">
+
+    <h1>Lesson: Creating a Heading with &lt;h1&gt;</h1>
+
+    <h2 class="green-heading">Introduction</h2>
+    <p>Welcome to your first HTML coding lesson! Today, we're going to learn how to create a heading in HTML. A heading is like a title that appears at the top of a page. It helps people know what the page or section is about. In HTML, we use special tags to create different parts of a webpage, and to make a big, bold heading, we use the <code>&lt;h1&gt;</code> tag.</p>
+
+    <h2 class="green-heading">Explanation</h2>
+    <p>The <code>&lt;h1&gt;</code> tag is used to make the biggest and most important heading on a webpage. The text inside this tag will appear larger and bolder than regular text, so it stands out. Think of it like the title of a book; it should be easy to see and read.</p>
+    <p>Here’s how you write an <code>&lt;h1&gt;</code> tag:</p>
+    
+    <pre><code>&lt;h1&gt;<span class="blue-bold">This is a Heading</span>&lt;/h1&gt;</code></pre>
+
+    <p>In the example above, "<span class="blue-bold">This is a Heading</span>" is the text that will appear big and bold on the page. You can put any text you like between the <code>&lt;h1&gt;</code> and <code>&lt;/h1&gt;</code> tags.</p>
+
+    <h2 class="green-heading">Example</h2>
+    <p>Let’s see an example in code:</p>
+
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My First Heading&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to My Webpage&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+    <p>When you run this code, you'll see "Welcome to My Webpage" appear as a large, bold heading at the top of the page.</p>
+
+    <h2 class="green-heading">Try It Yourself</h2>
+    <p>Type the code above in the box below and click "Run" to see how it works!</p>
+
+    <textarea id="userCode" rows="10" cols="50" placeholder="Type the HTML code here..."></textarea>
+    <br>
+    <button class="run-button" onclick="runCode()">Run</button>
+    <br><br>
+    <iframe id="resultFrame"></iframe>
+
+    <h2 class="green-heading">Exercise</h2>
+    <p>Now it’s your turn! Write your own code to create an <code>&lt;h1&gt;</code> heading. Try making the heading say "Hello, World!".</p>
+    
+    <p><strong>Tip:</strong> Use the example above to help you!</p>
+
+    <!-- Exercise 1 -->
+    <div id="exercise1" class="exercise-container">
+        <h3 class="green-heading">Exercise 1:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "Hello, World!".</p>
+        <textarea id="userAnswer1" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain1" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result1" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 2 -->
+    <div id="exercise2" class="exercise-container">
+        <h3 class="green-heading">Exercise 2:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "Welcome to Coding!".</p>
+        <textarea id="userAnswer2" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain2" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result2" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 3 -->
+    <div id="exercise3" class="exercise-container">
+        <h3 class="green-heading">Exercise 3:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "My First Heading".</p>
+        <textarea id="userAnswer3" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain3" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result3" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 4 -->
+    <div id="exercise4" class="exercise-container">
+        <h3 class="green-heading">Exercise 4:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "Learning HTML".</p>
+        <textarea id="userAnswer4" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain4" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result4" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 5 -->
+    <div id="exercise5" class="exercise-container">
+        <h3 class="green-heading">Exercise 5:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "Practice Makes Perfect".</p>
+        <textarea id="userAnswer5" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain5" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result5" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 6 -->
+    <div id="exercise6" class="exercise-container">
+        <h3 class="green-heading">Exercise 6:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "Keep Coding!".</p>
+        <textarea id="userAnswer6" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain6" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result6" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 7 -->
+    <div id="exercise7" class="exercise-container">
+        <h3 class="green-heading">Exercise 7:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "You're Doing Great!".</p>
+        <textarea id="userAnswer7" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain7" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result7" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 8 -->
+    <div id="exercise8" class="exercise-container">
+        <h3 class="green-heading">Exercise 8:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "Almost There!".</p>
+        <textarea id="userAnswer8" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain8" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result8" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 9 -->
+    <div id="exercise9" class="exercise-container">
+        <h3 class="green-heading">Exercise 9:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "One More to Go!".</p>
+        <textarea id="userAnswer9" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain9" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result9" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Exercise 10 -->
+    <div id="exercise10" class="exercise-container">
+        <h3 class="green-heading">Exercise 10:</h3>
+        <p>Create an <code>&lt;h1&gt;</code> tag with the text "You Did It!".</p>
+        <textarea id="userAnswer10" rows="4" cols="50" placeholder="Write your code here..."></textarea>
+        <br><br>
+        <button class="check-button" onclick="checkAnswer()">Check Now</button>
+        <button id="tryAgain10" class="try-again-button" onclick="tryAgain()">Try Again</button>
+        <div id="result10" style="margin-top: 10px;"></div>
+    </div>
+
+    <button style="background-color: red; color: white; padding: 10px; margin-top: 20px;" onclick="document.getElementById('answer').style.display='block'">View Answers</button>
+
+    <div id="answer" style="display:none; margin-top: 10px;">
+        <h2>Answers:</h2>
+        <pre><code>&lt;h1&gt;Hello, World!&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;Welcome to Coding!&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;My First Heading&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;Learning HTML&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;Practice Makes Perfect&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;Keep Coding!&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;You're Doing Great!&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;Almost There!&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;One More to Go!&lt;/h1&gt;</code></pre>
+        <pre><code>&lt;h1&gt;You Did It!&lt;/h1&gt;</code></pre>
+    </div>
+
+    <button class="more-lessons-button" onclick="window.location.href='https://sites.google.com/view/libsignin/home'">More Lessons</button>
+
+</body>
+</html>
